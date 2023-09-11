@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import AVKit
 
 class PlayerView: UIView {
     

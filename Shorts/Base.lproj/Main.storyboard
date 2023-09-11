@@ -24,11 +24,27 @@
             </objects>
             <point key="canvasLocation" x="2909.1603053435115" y="-34.507042253521128"/>
         </scene>
-        <!--Item-->
+        <!--View Controller-->
+        <scene sceneID="I9L-kf-Zpb">
+            <objects>
+                <viewController id="eZ1-rd-tgW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p6S-Mk-mvu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="W7q-bd-Mpm"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="GbW-Ou-Sg5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJU-Wi-QmF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2909" y="662"/>
+        </scene>
+        <!--Home-->
         <scene sceneID="gmt-HC-yZU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="j5w-fz-8k6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="vide" id="LPp-UH-PSq"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Component 1" id="LPp-UH-PSq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fmH-ql-hnb">
                         <autoresizingMask key="autoresizingMask"/>
@@ -47,23 +63,49 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="DHW-dY-rrj" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="m2Q-JM-LfC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2tT-jS-pg5">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="j5w-fz-8k6" kind="relationship" relationship="viewControllers" id="VTF-JR-X97"/>
+                        <segue destination="7NW-Bf-eRd" kind="relationship" relationship="viewControllers" id="x2y-76-Jhs"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZh-9s-yjA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1054.1984732824426" y="-34.507042253521128"/>
         </scene>
+        <!--Shorts-->
+        <scene sceneID="erm-jy-uis">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7NW-Bf-eRd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shorts" image="Component 2" id="1Uw-sf-ohs"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NLl-wo-gMa">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eZ1-rd-tgW" kind="relationship" relationship="rootViewController" id="s0t-Jn-K6j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q9v-6Y-yuo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1981" y="662"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="vide" width="128" height="128"/>
+        <image name="Component 1" width="24.333333969116211" height="24.333333969116211"/>
+        <image name="Component 2" width="30" height="26.333333969116211"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

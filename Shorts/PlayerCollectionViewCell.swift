@@ -14,12 +14,16 @@ class PlayerCollectionViewCell: UICollectionViewCell {
     static let identifier = "PlayerCollectionViewCell"
     
     var m3u8Url =  "https://iptv-isp.nexdecade.com/vod/shorts/clip/1.mp4/playlist.m3u8"  // "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"
-//    private var videoPlayer: AVPlayer?
     
     var videoPlayer: AVPlayer? = nil
+    
+    var isPlaying: Bool = false
 
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var playerView: PlayerView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var playPauseIndicatorImage: UIImageView!
     @IBOutlet weak var Progressslider: UISlider!
     
     @IBOutlet weak var descriptionStackView: UIStackView!
@@ -53,7 +57,12 @@ class PlayerCollectionViewCell: UICollectionViewCell {
         channelImage.layer.cornerRadius = channelImage.frame.height / 2.0
         channelImage2.layer.cornerRadius = 4
         
+        subscribeButton.layer.cornerRadius = 4
+        
         playerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        activityIndicator.startAnimating()
+        playPauseIndicatorImage.isHidden = true
         
 //        likeButton.setTitle("gbjh", for: .highlighted)
 //        likeButton.subtitleLabel?.text = "utfuyt"
@@ -61,29 +70,36 @@ class PlayerCollectionViewCell: UICollectionViewCell {
 //        likeButton.setTitle("loading..", for: .normal)
 //        likeButton.setTitle("loading...", for: .normal)
         
-        likeButton.setImage(UIImage(systemName: "circle"), for: .focused)
+//        likeButton.setImage(UIImage(systemName: "circle"), for: .focused)
 //        likeButton.setTitle("1.99$", for: .normal)
-        likeButton.subtitleLabel?.textAlignment = .center
-        likeButton.subtitleLabel?.text = "subtitle text to check how it..."
+//        likeButton.subtitleLabel?.textAlignment = .center
+//        likeButton.subtitleLabel?.text = "subtitle text to check how it..."
 
 
     }
     
     func playVideo() {
-        Progressslider.isHidden = true
+//        Progressslider.isHidden = true
 
 //        guard let path = Bundle.main.path(forResource: "AppInventorL1Setupemulator", ofType:"mp4") else {
 //            debugPrint("video.m4v not found")
 //            return
 //        }
-       if let url = URL(string: m3u8Url) {
-            let asset = AVURLAsset(url: url, options: nil)
-            let playerItem = AVPlayerItem(asset: asset)
+        activityIndicator.stopAnimating()
+        
+        if let url = URL(string: m3u8Url) {
+            
+//            let asset = AVURLAsset(url: url, options: nil)
+//            let playerItem = AVPlayerItem(asset: asset)
+            let playerItem = AVPlayerItem(url: url)
             videoPlayer = AVPlayer(playerItem: playerItem)
             
             //        videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
             videoPlayer?.playImmediately(atRate: 1)
+            playerView.playerLayer.videoGravity = .resizeAspectFill
             playerView.player = videoPlayer
+            
+            isPlaying = true
         }
     }
     
@@ -121,6 +137,8 @@ class PlayerCollectionViewCell: UICollectionViewCell {
     
     func stopVideo() {
         playerView.player?.pause()
+        isPlaying = false
+
     }
     
     func selected() {
