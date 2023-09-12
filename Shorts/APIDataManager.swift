@@ -11,7 +11,7 @@ import Alamofire
 class APIDataManager {
     static let shared = APIDataManager()
     
-    private var apiResponse: Shorts?
+//    private var apiResponse: Shorts?
     
     private init() {}
     
@@ -27,7 +27,7 @@ class APIDataManager {
                         let decoder = JSONDecoder()
                         let apiResponse = try decoder.decode(Shorts.self, from: data)
                         // Update the data models with the fetched data
-                        self.apiResponse = apiResponse
+//                        self.apiResponse = apiResponse
                         completion(apiResponse, nil)
                     } catch {
                         completion(nil, error)
@@ -39,7 +39,7 @@ class APIDataManager {
         }
     }
     
-    func getShorts() -> [Short] {
+//    func getShorts() -> [Short] {
         
 //        APIDataManager.shared.fetchData { (apiResponse, error) in
 //            if let apiResponse = apiResponse {
@@ -57,8 +57,8 @@ class APIDataManager {
 //            }
 //        }
         
-        return apiResponse?.shorts ?? []
-    }
+//        return apiResponse?.shorts ?? []
+//    }
     
 //    func setShorts() -> [Short] {
 //        APIDataManager.shared.fetchData { (apiResponse, error) in

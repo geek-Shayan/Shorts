@@ -50,7 +50,6 @@ class ViewController: UIViewController {
 //        callShortsAPI()
         
         dataBinding()
-//        collectionView.reloadData()
         
         setupView()
 
@@ -63,7 +62,9 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //                collectionView.reloadData()
-         shorts = APIDataManager.shared.getShorts()
+//         shorts = APIDataManager.shared.getShorts()
+//        dataBinding()
+//        self.collectionView.reloadData()
     }
 
     
@@ -161,7 +162,7 @@ class ViewController: UIViewController {
         
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.isPagingEnabled = true
-        collectionView.showsVerticalScrollIndicator = false
+//        collectionView.showsVerticalScrollIndicator = false
  
         view.addSubview(collectionView)
         
@@ -230,6 +231,10 @@ extension ViewController: UICollectionViewDataSource {
             }
         }
         
+        
+//        cell.playerView.player?.currentItem
+//        cell.playerView.player?.replaceCurrentItem(with: playerItem)
+        
         checkVisibilityOfCell(cell: cell, indexPath: indexPath)
         
 //        if cell.isPlaying == true {
@@ -254,10 +259,13 @@ extension ViewController: UICollectionViewDataSource {
             }
         let indexPaths = self.collectionView.indexPathsForVisibleItems.sorted()
         let cellCount = visibleCells.count
+        
         guard let firstCell = visibleCells.first as? PlayerCollectionViewCell, let firstIndex = indexPaths.first else {return}
         firstCell.Progressslider.isHidden = true
         checkVisibilityOfCell(cell: firstCell, indexPath: firstIndex)
+        
         if cellCount == 1 {return}
+        
         guard let lastCell = visibleCells.last as? PlayerCollectionViewCell, let lastIndex = indexPaths.last else {return}
         lastCell.Progressslider.isHidden = true
         checkVisibilityOfCell(cell: lastCell, indexPath: lastIndex)
@@ -272,7 +280,13 @@ extension ViewController: UICollectionViewDataSource {
     func checkVisibilityOfCell(cell: PlayerCollectionViewCell, indexPath: IndexPath) {
         if let cellRect = (collectionView.layoutAttributesForItem(at: indexPath)?.frame) {
             let completelyVisible = collectionView.bounds.contains(cellRect)
-            if completelyVisible {cell.playVideo()} else {cell.stopVideo()}
+            
+            if completelyVisible {
+                cell.playVideo()
+            }
+            else {
+                cell.stopVideo()
+            }
         }
     }
     

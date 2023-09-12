@@ -193,7 +193,7 @@
             <connections>
                 <outlet property="Progressslider" destination="ZB8-hG-4XE" id="bfz-Og-cmJ"/>
                 <outlet property="actionStackView" destination="THk-1w-7Nc" id="Ll7-ss-r9Z"/>
-                <outlet property="activityIndicator" destination="4nB-WQ-454" id="rPY-FP-9Ia"/>
+                <outlet property="activityIndicator" destination="4nB-WQ-454" id="DwR-bd-hsy"/>
                 <outlet property="channelImage" destination="V6T-a1-bYx" id="5kG-ah-tQi"/>
                 <outlet property="channelImage2" destination="gpj-GY-jN9" id="Ogc-f2-jnP"/>
                 <outlet property="channelNameLabel" destination="JsF-Zp-cfd" id="IOO-04-3ub"/>

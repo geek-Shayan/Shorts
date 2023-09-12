@@ -15,7 +15,7 @@ class PlayerCollectionViewCell: UICollectionViewCell {
     
     var m3u8Url =  "https://iptv-isp.nexdecade.com/vod/shorts/clip/1.mp4/playlist.m3u8"  // "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"
     
-    var videoPlayer: AVPlayer? = nil
+//    var videoPlayer: AVPlayer? = nil
     
     var isPlaying: Bool = false
 
@@ -89,15 +89,12 @@ class PlayerCollectionViewCell: UICollectionViewCell {
         
         if let url = URL(string: m3u8Url) {
             
-//            let asset = AVURLAsset(url: url, options: nil)
-//            let playerItem = AVPlayerItem(asset: asset)
-            let playerItem = AVPlayerItem(url: url)
-            videoPlayer = AVPlayer(playerItem: playerItem)
-            
-            //        videoPlayer = AVPlayer(url: URL(fileURLWithPath: path))
-            videoPlayer?.playImmediately(atRate: 1)
-            playerView.playerLayer.videoGravity = .resizeAspectFill
-            playerView.player = videoPlayer
+            let asset = AVURLAsset(url: url, options: nil)
+            let playerItem = AVPlayerItem(asset: asset)
+            playerView.player = AVPlayer(playerItem: playerItem)
+
+            playerView.player?.playImmediately(atRate: 1)
+//            playerView.playerLayer.videoGravity = .resizeAspectFill
             
             isPlaying = true
         }
@@ -138,11 +135,15 @@ class PlayerCollectionViewCell: UICollectionViewCell {
     func stopVideo() {
         playerView.player?.pause()
         isPlaying = false
-
+        
     }
     
-    func selected() {
-//        genreBackgroundView.backgroundColor = UIColor(red: 0.9, green: 0.04, blue: 0.08, alpha: 1) //red
+    func changePlayerItem() {
+        
+//        if playerView.player?.currentItem == nil {
+//
+//            playerView.player?.replaceCurrentItem(with: playerItem)
+//        }
     }
     
     func deSelected() {
